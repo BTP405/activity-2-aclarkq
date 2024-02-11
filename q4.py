@@ -1,3 +1,16 @@
+# stats decrator
+def stats_decorator(func):
+    def wrapper(line_num, nums_list, count, total, largest):
+        print(f"Line {line_num}: {nums_list} -> count: {count}, average: {total/count}, largest: {largest}")
+        func(line_num, nums_list, count, total, largest)
+        
+    return wrapper
+
+# create decorator obj
+@stats_decorator
+def print_stats_decorator(line_num, nums_list, count, total, largest):
+    pass # 
+
 def printStats(t):
     """ Reads lines containing multiple numbers from file; calculates and prints
     how many numbers, the average, and the largest number
@@ -6,10 +19,10 @@ def printStats(t):
     file = open(t, "r")
 
     # initalize vars
-    count = 0
-    total = 0
-    largest = 0
-    lineNum = 0
+    count = 0 # number of numbers
+    total = 0 # sum of numbers
+    largest = 0 # largest number
+    lineNum = 0 # line number
 
     # loop over lines in file
     for line in file:
@@ -17,8 +30,7 @@ def printStats(t):
         # convert line to list of ints
         line = line.split() #space seperated
 
-        # list for storing numbers in line
-        numsList = []
+        numsList = [] # list for storing numbers in line
 
         # loop over numbers in line
         for number in line:
@@ -31,7 +43,7 @@ def printStats(t):
             if number > largest:
                 largest = number
         
-        # print stats using decorator
-        print(f"Line {lineNum}: {numsList} -> count: {count}, average: {total/count}, largest: {largest}")
+        # print stats using decorator 
+        print_stats_decorator(lineNum, numsList, count, total, largest) # doesn't feel particularly efficient
 
 printStats("numbers.txt")
