@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 def graphSnowfall(t):
     """Reads numbers from a file into a dictionary of segments of snowfall 
@@ -30,6 +30,16 @@ def graphSnowfall(t):
             snowfall_heights["41_50"] += 1
 
     # plot graph
+    
+    # graph title
+    plt.title("Snowfall Height Occurences")
+    
+    # x-axis label
+    plt.xlabel("Snowfall Height Range")
+    
+    # y-axis label
+    plt.ylabel("Occurences")
+    
     # bar labels
     labels = ["1-10", "11-20", "21-30", "31-40", "41-50"]
 
